@@ -18,13 +18,18 @@ st.set_page_config(
 @st.cache_resource
 def load_assets():
     try:
-        # Load the Full Pipeline (includes Preprocessing + XGBoost)
-        pipeline = joblib.load('vehicle_price_pipeline.pkl')
-        # Load the list of columns the model expects
-        columns = joblib.load('input_columns.pkl')
+        # CORRECTED PATHS: Pointing to the 'models/' folder
+        pipeline = joblib.load('models/vehicle_price_pipeline.pkl')
+        columns = joblib.load('models/input_columns.pkl')
         return pipeline, columns
     except FileNotFoundError:
-        return None, None
+        # Fallback: Try loading from root if models folder fails (safety check)
+        try:
+            pipeline = joblib.load('vehicle_price_pipeline.pkl')
+            columns = joblib.load('input_columns.pkl')
+            return pipeline, columns
+        except FileNotFoundError:
+            return None, None
 
 pipeline, model_columns = load_assets()
 
