@@ -3,19 +3,13 @@ import pandas as pd
 import joblib
 import datetime
 
-# ------------------------------------------------------------------------------
-# 1. PAGE CONFIGURATION (Wide Layout for "One Page" Feel)
-# ------------------------------------------------------------------------------
 st.set_page_config(
     page_title="Used Vehicle Price Prediction",
     page_icon="🚘",
-    layout="wide",  # Uses full screen width
+    layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# ------------------------------------------------------------------------------
-# 2. CUSTOM CSS (The "Modern Look" Engine)
-# ------------------------------------------------------------------------------
 st.markdown("""
     <style>
     /* Global Styles */
@@ -24,7 +18,7 @@ st.markdown("""
     }
     h1, h2, h3 {
         font-family: 'Helvetica Neue', sans-serif;
-        font-weight: 700;
+        font-weight: 500;
     }
     
     /* Hide Streamlit Branding */
@@ -52,7 +46,7 @@ st.markdown("""
     }
     .metric-value {
         font-size: 3.5rem;
-        font-weight: 800;
+        font-weight: 600;
         margin: 0;
     }
     .metric-label {
@@ -80,9 +74,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ------------------------------------------------------------------------------
-# 3. LOAD ASSETS
-# ------------------------------------------------------------------------------
+
 @st.cache_resource
 def load_assets():
     try:
@@ -103,10 +95,6 @@ pipeline, model_columns = load_assets()
 if pipeline is None:
     st.error("⚠️ System Error: Model files missing. Please check repository structure.")
     st.stop()
-
-# ------------------------------------------------------------------------------
-# 4. APP LAYOUT
-# ------------------------------------------------------------------------------
 
 # Header Section
 col_head1, col_head2 = st.columns([3, 1])
