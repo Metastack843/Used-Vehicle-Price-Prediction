@@ -18,7 +18,7 @@ st.markdown("""
     }
     h1, h2, h3 {
         font-family: 'Helvetica Neue', sans-serif;
-        font-weight: 500;
+        font-weight: 700;
     }
     
     /* Hide Streamlit Branding */
@@ -46,7 +46,7 @@ st.markdown("""
     }
     .metric-value {
         font-size: 3.5rem;
-        font-weight: 600;
+        font-weight: 800;
         margin: 0;
     }
     .metric-label {
