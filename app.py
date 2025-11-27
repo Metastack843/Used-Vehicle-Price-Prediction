@@ -111,7 +111,7 @@ if pipeline is None:
 # Header Section
 col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
-    st.title("🚘 Vehicle Value AI")
+    st.title("🚘 Used Vehicle Price Prediction")
     st.caption("Professional Market Valuation Engine powered by XGBoost")
 
 st.markdown("---")
@@ -138,7 +138,7 @@ with left_col:
             mileage = st.number_input("Mileage", 0, 300000, 45000, step=1000)
             fuel_type = st.selectbox("Fuel", ['Gasoline', 'Diesel', 'Electric', 'Hybrid'])
             condition = st.selectbox("Condition", ['Excellent', 'Good', 'Fair'])
-            accident_history = st.selectbox("History", ['None', 'Minor', 'Major'])
+            accident_history = st.selectbox("Damage", ['None', 'Minor', 'Major'])
 
         # Advanced/Hidden inputs (Accordion to save space)
         with st.expander("Advanced Options"):
