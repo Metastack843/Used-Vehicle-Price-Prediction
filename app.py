@@ -7,7 +7,7 @@ import datetime
 # 1. PAGE CONFIGURATION (Wide Layout for "One Page" Feel)
 # ------------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Vehicle Value AI",
+    page_title="Used Vehicle Price Prediction",
     page_icon="🚘",
     layout="wide",  # Uses full screen width
     initial_sidebar_state="collapsed"
