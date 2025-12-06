@@ -209,13 +209,15 @@ st.markdown(
 # -----------------------------------------------------------------------------
 # LOAD MODEL ASSETS (same behavior as your original code, but path-safe)
 # -----------------------------------------------------------------------------
+from pathlib import Path
+
 @st.cache_resource
 def load_assets():
     base_dir = Path(__file__).resolve().parent
 
     model_candidates = [
-        base_dir / "models" / "vehicle_price_pipeline.pkl",
-        base_dir / "vehicle_price_pipeline.pkl",
+        base_dir / "models" / "vehicle_price_pipeline.pkl",   # original structure
+        base_dir / "vehicle_price_pipeline.pkl",              # same folder as app
     ]
     cols_candidates = [
         base_dir / "models" / "input_columns.pkl",
@@ -223,10 +225,24 @@ def load_assets():
     ]
 
     model_file = next((p for p in model_candidates if p.exists()), None)
-    cols_file = next((p for p in cols_candidates if p.exists()), None)
+    cols_file  = next((p for p in cols_candidates if p.exists()), None)
 
     if model_file is None or cols_file is None:
+        st.error(
+            "⚠️ System Error: Model files missing.\n\n"
+            f"Looked for:\n"
+            + "\n".join(f"- {p}" for p in model_candidates + cols_candidates)
+        )
         return None, None
+
+    try:
+        pipeline = joblib.load(model_file)
+        columns  = joblib.load(cols_file)
+        return pipeline, columns
+    except Exception as e:
+        st.error(f"Error loading model assets: {e}")
+        return None, None
+
 
     pipeline = joblib.load(model_file)
     columns = joblib.load(cols_file)
