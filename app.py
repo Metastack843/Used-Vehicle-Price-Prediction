@@ -311,7 +311,7 @@ with col_hero_left:
         """,
         unsafe_allow_html=True,
     )
-    st.markdown('<div class="hero-title">Used Vehicle Price Studio</div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-title">Used Vehicle Price Prediction</div>', unsafe_allow_html=True)
     st.markdown(
         """
         <p class="hero-subtitle">
